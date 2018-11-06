@@ -10,9 +10,9 @@ const util = {
     return fs.existsSync(configPath) && dotenv.config({ path: configPath });
   },
 
-  writeConfig(config = {}) {
+  writeConfig(config = {}, configPath = CONFIG_PATH) {
     const parsedConfig = _.map(config, (val, key) => `${key}=${val}`).join('\n');
-    return fs.writeFileSync(CONFIG_PATH, parsedConfig)
+    return fs.writeFileSync(configPath, parsedConfig)
   }
 }
 
