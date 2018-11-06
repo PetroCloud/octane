@@ -1,5 +1,5 @@
 {
-  "name": "octane",
+  "name": "octane-cli",
   "version": "0.0.1",
   "description": "Docker application launcher and manager",
   "main": "index.js",
