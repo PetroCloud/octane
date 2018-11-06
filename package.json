@@ -5,5 +5,9 @@
   "main": "index.js",
   "repository": "git@github.com:PetroCloud/octane.git",
   "author": "Bin Ury <1146921+teddy-error@users.noreply.github.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.0"
+  }
 }
