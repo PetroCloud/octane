@@ -1,15 +1,12 @@
-const path = require('path');
-const util = require('util');
-const fs = require('fs');
-
+// const inquire = require('inquirer');
+// const chalk = require('chalk');
 const _ = require('lodash');
 const program = require('commander');
-const inquire = require('inquirer');
-const chalk = require('chalk');
-const dotenv = require('dotenv');
+const util = require('./util');
 
 const config = { parsed: {}};
-loadUserConfig();
+const userConfig = util.getUserConfig();
+_.assign(config, userConfig);
 
 program
   .version(require('../package.json').version)
@@ -20,16 +17,9 @@ program
 program
   .command('config')
   .action(() => {
-    console.log(config);
+    return userConfig ?
+      console.log(config) :
+      console.warn('No configuration file exists, would you like to create one?');
   });
-
-
-function getUserConfig(configPath = path.resolve(process.env.HOME, '.env')) {
-  return fs.existsSync(configPath) && dotenv.config({ path: configPath });
-}
-
-function loadUserConfig() {
-  _.assign(config, getUserConfig());
-}
 
 program.parse(process.argv);
